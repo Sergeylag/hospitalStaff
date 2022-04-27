@@ -1,7 +1,8 @@
 import React from 'react';
 import {AppBar, Box, Tab, Tabs, Typography} from "@mui/material";
-import {makeStyles} from "@mui/styles";
-import {Theme} from '@mui/material/styles';
+// import {makeStyles} from "@mui/styles";
+// import {Theme} from '@mui/material/styles';
+import {AdminNavBar} from "../styles/navbar/admin-nav-bar";
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -36,15 +37,15 @@ function a11yProps(index: any) {
     };
 }
 
-const useStyles = makeStyles((theme: Theme) => ({
-    root: {
-        flexGrow: 1,
-        backgroundColor: '#74992e' //theme.palette.background.paper,
-    },
-}));
+// const useStyles = makeStyles((theme: Theme) => ({
+//     root: {
+//         flexGrow: 10,
+//         backgroundColor: '#638328' //theme.palette.background.paper,
+//     },
+// }));
 
 const Admin = () => {
-    const classes = useStyles();
+    // const classes = useStyles();
     const [value, setValue] = React.useState(0);
 
     const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
@@ -53,7 +54,8 @@ const Admin = () => {
     return (
         <main>
             <section>
-                <div className={classes.root}>
+                {/*<div className={classes.root}>*/}
+                <AdminNavBar>
                     <AppBar position="static">
                         <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
                             <Tab label="Item One" {...a11yProps(0)} />
@@ -70,7 +72,7 @@ const Admin = () => {
                     <TabPanel value={value} index={2}>
                         adminPages Item Three
                     </TabPanel>
-                </div>
+                </AdminNavBar>
             </section>
         </main>
     );
