@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -10,9 +10,13 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import security from '../public/icons/security.png';
+import {useRouter} from "next/router";
+
 
 export default function SignIn() {
-
+    const router = useRouter()
+    console.log(router)
+    const [valueLogin, setValueLogin] = useState('')
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline />
@@ -32,6 +36,8 @@ export default function SignIn() {
                         name="email"
                         autoComplete="email"
                         autoFocus
+                            value = {valueLogin}
+                            onChange={(e)=>setValueLogin(e.target.value)}
                     />
                     <TextField
                         variant="outlined"
@@ -53,6 +59,7 @@ export default function SignIn() {
                         fullWidth
                         variant="contained"
                         color="primary"
+                        onClick={()=>router.push('/test')}
                     >
                         Войти
                     </Button>
