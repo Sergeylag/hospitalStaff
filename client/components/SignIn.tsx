@@ -15,8 +15,10 @@ import {useRouter} from "next/router";
 
 export default function SignIn() {
     const router = useRouter()
-    console.log(router)
     const [valueLogin, setValueLogin] = useState('')
+    const [valuePassword, setValuePassword] = useState('')
+    console.log(router, valueLogin, valuePassword)
+
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline />
@@ -49,6 +51,8 @@ export default function SignIn() {
                         type="password"
                         id="password"
                         autoComplete="current-password"
+                        value = {valuePassword}
+                        onChange={(e)=>setValuePassword(e.target.value)}
                     />
                     <FormControlLabel
                         control={<Checkbox value="remember" color="primary" />}
