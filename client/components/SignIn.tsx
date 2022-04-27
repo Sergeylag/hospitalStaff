@@ -11,13 +11,41 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import security from '../public/icons/security.png';
 import {useRouter} from "next/router";
+import {AuthBD} from "./authorization/bd";
 
+function Auth(router, log, pas){
+    console.log(router, log, pas, AuthBD.length)
+    let role = ''
+    AuthBD.forEach(e => {
+        if(e.login==log && e.password==pas){
+            role = e.role
+        }
+    })
+
+    console.log(role)
+
+    switch (role) {
+        case 'user':
+            router.push('/user')
+            break;
+        case 'manager':
+            router.push('/manager')
+            break;
+        case 'admin':
+            router.push('/admin')
+            break;
+        default:
+            console.log('В БД таких нет!')
+    }
+}
 
 export default function SignIn() {
     const router = useRouter()
+
+
     const [valueLogin, setValueLogin] = useState('')
     const [valuePassword, setValuePassword] = useState('')
-    console.log(router, valueLogin, valuePassword)
+    // console.log(router, valueLogin, valuePassword)
 
     return (
         <Container component="main" maxWidth="xs">
@@ -33,13 +61,13 @@ export default function SignIn() {
                         margin="normal"
                         required
                         fullWidth
-                        id="email"
+                        id="login"
                         label="Login"
-                        name="email"
-                        autoComplete="email"
+                        name="login"
+                        autoComplete="login"
                         autoFocus
-                            value = {valueLogin}
-                            onChange={(e)=>setValueLogin(e.target.value)}
+                        value = {valueLogin}
+                        onChange={(e)=>setValueLogin(e.target.value)}
                     />
                     <TextField
                         variant="outlined"
@@ -59,11 +87,11 @@ export default function SignIn() {
                         label="Запомнить пароль"
                     />
                     <Button
-                        type="submit"
+                        // type="submit"
                         fullWidth
                         variant="contained"
                         color="primary"
-                        onClick={()=>router.push('/test')}
+                        onClick={()=>Auth(router, valueLogin, valuePassword)}
                     >
                         Войти
                     </Button>
