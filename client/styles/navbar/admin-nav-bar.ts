@@ -1,5 +1,12 @@
 import styled from "styled-components";
 
+export const AdminNavBarMain = styled.main`
+    .MuiPaper-root{
+      background-color: #0070f3;
+    }
+`;
+
+
 export const AdminNavBar = styled.div`
   .MuiButtonBase-root {
     color: #ffffff;

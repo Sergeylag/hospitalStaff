@@ -1,8 +1,16 @@
 import React from 'react';
-import {AppBar, Box, Tab, Tabs, Typography} from "@mui/material";
+// import {AppBar, Box, Tab, Tabs, Typography} from "@mui/material";
 // import {makeStyles} from "@mui/styles";
 // import {Theme} from '@mui/material/styles';
-import {AdminNavBar} from "../styles/navbar/admin-nav-bar";
+import { makeStyles, Theme } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+
+
+import {AdminNavBarMain} from "../styles/navbar/admin-nav-bar";
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -37,25 +45,25 @@ function a11yProps(index: any) {
     };
 }
 
-// const useStyles = makeStyles((theme: Theme) => ({
-//     root: {
-//         flexGrow: 10,
-//         backgroundColor: '#638328' //theme.palette.background.paper,
-//     },
-// }));
+const useStyles = makeStyles((theme: Theme) => ({
+    root: {
+        flexGrow: 10,
+        backgroundColor: theme.palette.background.paper,
+    },
+}));
 
 const Admin = () => {
-    // const classes = useStyles();
+    const classes = useStyles();
     const [value, setValue] = React.useState(0);
 
     const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
         setValue(newValue);
     };
     return (
-        <main>
+        <AdminNavBarMain>
             <section>
                 {/*<div className={classes.root}>*/}
-                <AdminNavBar>
+                <div className={classes.root}>
                     <AppBar position="static">
                         <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
                             <Tab label="Item One" {...a11yProps(0)} />
@@ -72,9 +80,9 @@ const Admin = () => {
                     <TabPanel value={value} index={2}>
                         adminPages Item Three
                     </TabPanel>
-                </AdminNavBar>
+                </div>
             </section>
-        </main>
+        </AdminNavBarMain>
     );
 };
 
