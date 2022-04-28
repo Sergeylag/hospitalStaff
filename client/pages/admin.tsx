@@ -9,8 +9,8 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
-
 import {AdminNavBarMain} from "../styles/navbar/admin-nav-bar";
+import Api from "../components/api/Api";
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -73,6 +73,7 @@ const Admin = () => {
                     </AppBar>
                     <TabPanel value={value} index={0}>
                         adminPages Item One
+                        <Api/>
                     </TabPanel>
                     <TabPanel value={value} index={1}>
                         adminPages Item Two
