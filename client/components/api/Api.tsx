@@ -55,9 +55,9 @@ const Api = () => {
         <div>
             {merchants ? merchants : 'There is no merchant data available'}
             <br/>
-                <button onClick={createMerchant}>Add merchant</button>
-                <br/>
-                    <button onClick={deleteMerchant}>Delete merchant</button>
+            <button onClick={createMerchant}>Add merchant</button>
+            <br/>
+            <button onClick={deleteMerchant}>Delete merchant</button>
         </div>
     );
 };
